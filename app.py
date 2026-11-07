@@ -6,13 +6,13 @@ import mysql.connector
 from mysql.connector import Error
 
 app = Flask(__name__)
-app.secret_key = "sadiya-placement-demo-key"
+app.secret_key = os.environ.get("FLASK_SECRET_KEY") or os.urandom(32)
 
 # MySQL Database Connection
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": "sadiya",
+    "password": os.environ.get("DB_PASSWORD"),
     "database": "sadiya_placement_db"
 }
 
